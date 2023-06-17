@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { getTop20, getQuery } from "./requests"
+import { Results } from "./results"
 
 export const Topbar = () => {
     const [search, setSearch] = useState('')
@@ -15,48 +16,24 @@ export const Topbar = () => {
     }
 
     return (
-        <div style={styles.container}>
-
-            <label for='searchInput'>Movie search</label>
-            <input id='searchInput' type='text' autocomplete='off' onChange={e => setSearch(e.target.value)}>
-            </input>
-            <button style={styles.btn} onClick={() => handleSearch(search)}>search</button>
-
-            <button style={styles.btn} onClick={handleTop20}>top 20</button>
-
-            {data &&
-            
-            <div style={styles.box}>
-                {data.map((movie) => 
-                <div style={styles.movies}>
-                    <strong><p>{movie.title}</p></strong>
-                    <p>{movie.vote_average}</p>
-                    <p>{movie.overview}</p>
-                </div>
-                )}
-            </div>
-            }
-
+        <div>
+        <div class={styles.container}>
+        <div class={styles.search}>
+            <input class={styles.input} type='text' autocomplete='off' onChange={e => setSearch(e.target.value)}></input>
+            <button class={styles.searchBtn} onClick={() => handleSearch(search)}>🔎</button>
+        </div>
+            <button class={styles.btn} onClick={handleTop20}>top 20</button>
+        </div>
+            <Results data={data}/>
         </div>
     )
 }
 
 const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-    },
-    btn: {
-        width: '100px',
-        margin: '10px'
-    },
-    box: {
-        width: '80%',
-        margin: '10px' 
-    },
-    movies: {
-        margin: '10px',
-        textAlign: 'center'
-    }
+    container: 'flex justify-end text-center bg-teal-900',
+    header: 'text-xl',
+    search: 'flex items-center m-6',
+    input: 'pl-1 rounded !outline-none',
+    btn: 'rounded w-24 m-5 bg-teal-600',
+    searchBtn: 'rounded w-12 bg-teal-600',
 }

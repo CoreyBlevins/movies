@@ -24,14 +24,14 @@ export const getTop20 = () => {
     return response
 }
 
-export const getQuery = (search) => {
+export const getQuery = (query) => {
     const url = 'https://api.themoviedb.org/3/search/movie'
-    const search1 = search
+    const search = query
     const options = {
         method: 'GET',
         url: url,
         params: {
-            query: search1,
+          query: search,
           include_adult: 'false',
           include_video: 'false',
           language: 'en-US',
