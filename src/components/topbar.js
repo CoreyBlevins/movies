@@ -7,7 +7,7 @@ export const Topbar = ({search, setSearch, setData}) => {
 
 
     function handleSearch(query) {
-        getQuery(query).then(res => setData(res.data.results))
+        getQuery(query).then(res => res && setData(res.data.results))
     }
 
     return (

@@ -26,5 +26,5 @@ console.log(movieId)
 export default App;
 
 const styles = {
-  overview: 'bg-neutral-900 min-h-screen pb-4'
+  overview: 'bg-gradient-to-br from-zinc-800 to-neutral-900 min-h-screen pb-4'
 }
