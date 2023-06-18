@@ -1,7 +1,13 @@
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { getTop20 } from "./requests"
 
-export const Results =({data, setMovieId}) => {
+export const Top20 = ({setMovieId}) => {
+    const [data, setData] = useState([])
 
+    useEffect(() => {
+        getTop20().then(res => setData(res.data.results))
+    }, [])
 
     return (
         <div>

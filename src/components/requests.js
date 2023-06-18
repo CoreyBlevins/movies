@@ -26,12 +26,11 @@ export const getTop20 = () => {
 
 export const getQuery = (query) => {
     const url = 'https://api.themoviedb.org/3/search/movie'
-    const search = query
     const options = {
         method: 'GET',
         url: url,
         params: {
-          query: search,
+          query: `${query}`,
           include_adult: 'false',
           include_video: 'false',
           language: 'en-US',
@@ -45,4 +44,19 @@ export const getQuery = (query) => {
 
     const response = axios.request(options)
     return response
+}
+
+export const getDetails = (movieId) => {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}`
+    const options = {
+        method: 'GET',
+        url: url,
+        params: {language: 'en-US'},
+        headers: {
+          accept: 'application/json',
+          Authorization: token
+        }
+      };
+      const response = axios.request(options)
+      return response
 }
