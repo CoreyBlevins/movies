@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getTop20 } from "./requests"
+import { Average } from "./average"
 
 export const Top20 = ({setMovieId}) => {
     const [data, setData] = useState([])
@@ -20,7 +21,7 @@ export const Top20 = ({setMovieId}) => {
                     <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title}/>
                     <div class={styles.text}>
                         <p class={styles.title}>{movie.title}</p>
-                        <p class={styles.vote}>{movie.vote_average}</p>
+                        <Average average={movie.vote_average} />
                     </div>
                     </Link>
                 </div>
@@ -32,9 +33,9 @@ export const Top20 = ({setMovieId}) => {
 }
 
 const styles = {
-    grid: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 m-4',
-    movie: 'flex flex-col items-center text-center rounded bg-neutral-400 cursor-pointer',
-    text: 'flex items-center justify-between w-full p-2',
-    title: 'font-medium pl-2',
-    vote: 'border border-neutral-500 rounded p-1',
+    grid: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-2 m-4',
+    movie: 'flex flex-col items-center text-center rounded cursor-pointer hover:bg-gradient-to-br from-zinc-700 to-zinc-800 ',
+    img: '',
+    text: 'flex items-center justify-between text-white w-full p-2',
+    title: 'font-medium text-left',
 }

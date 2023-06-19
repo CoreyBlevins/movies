@@ -10,7 +10,6 @@ function App() {
   const [data, setData] = useState([])
   const [movieId, setMovieId] = useState('')
 
-console.log(movieId)
   return (
     <div class={styles.overview}>
       <Topbar search={search} setSearch={setSearch} setData={setData} setMovieId={setMovieId}/>

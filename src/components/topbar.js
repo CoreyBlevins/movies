@@ -2,9 +2,7 @@
 import { Link } from "react-router-dom"
 import { getQuery } from "./requests"
 
-
-export const Topbar = ({search, setSearch, setData}) => {
-
+export const Topbar = ({ search, setSearch, setData }) => {
 
     function handleSearch(query) {
         getQuery(query).then(res => res && setData(res.data.results))
@@ -12,14 +10,17 @@ export const Topbar = ({search, setSearch, setData}) => {
 
     return (
         <div>
-        <div class={styles.container}>
-        <div class={styles.search}>
-            <input class={styles.input} type='text' autocomplete='off' onChange={e => setSearch(e.target.value)}></input>
-        <Link to={`/results/${search}`}>
-            <button class={styles.searchBtn} onClick={() => handleSearch(search)}>🔎</button>
-        </Link>
-        </div>
-        </div>
+            <div class={styles.container}>
+                <div class={styles.search}>
+                    <Link to='/'>
+                        <button className='mr-10 bg-sky-600'>home</button>
+                    </Link>
+                    <input class={styles.input} type='text' autocomplete='off' onChange={e => setSearch(e.target.value)}></input>
+                    <Link to={`/results/${search}`}>
+                        <button class={styles.searchBtn} onClick={() => handleSearch(search)}>🔎</button>
+                    </Link>
+                </div>
+            </div>
         </div>
     )
 }

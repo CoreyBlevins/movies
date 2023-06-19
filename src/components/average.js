@@ -1,20 +1,20 @@
 
 export const Average = ({ average }) => {
     const score = Math.floor(average)
+    const value = String(average).length === 1 ? `${average}.0` : String(average).slice(0, 3)
 
     function getColoredScore() {
-        console.log(score)
         if (score >= 8) {
             return (
                 <div className={`border border-green-500 text-green-500 rounded p-1 ml-2`}>
-                    <p>{String(average).slice(0, 3)}</p>
+                    <p>{value}</p>
                 </div>
             )
         }
         else if (score < 8 && score >= 5) {
             return (
                 <div className={`border border-yellow-500 text-yellow-500 rounded p-1 ml-2`}>
-                    <p>{String(average).slice(0, 3)}</p>
+                    <p>{value}</p>
                 </div>
             )
         }
@@ -27,7 +27,7 @@ export const Average = ({ average }) => {
         }
         else return (
             <div className={`border border-red-500 text-red-500 rounded p-1 ml-2`}>
-                <p>{String(average).slice(0, 3)}</p>
+                <p>{value}</p>
             </div>
         )
     }
