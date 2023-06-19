@@ -10,14 +10,14 @@ export const Topbar = ({ search, setSearch, setData }) => {
 
     return (
         <div>
-            <div class={styles.container}>
-                <div class={styles.search}>
+            <div className={styles.container}>
+                <div className={styles.search}>
                     <Link to='/'>
                         <button className='mr-10 bg-sky-600'>home</button>
                     </Link>
-                    <input class={styles.input} type='text' autocomplete='off' onChange={e => setSearch(e.target.value)}></input>
+                    <input className={styles.input} type='text' autoComplete='off' onChange={e => setSearch(e.target.value)}></input>
                     <Link to={`/results/${search}`}>
-                        <button class={styles.searchBtn} onClick={() => handleSearch(search)}>🔎</button>
+                        <button className={styles.searchBtn} onClick={() => handleSearch(search)}>🔎</button>
                     </Link>
                 </div>
             </div>

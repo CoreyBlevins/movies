@@ -11,7 +11,7 @@ function App() {
   const [movieId, setMovieId] = useState('')
 
   return (
-    <div class={styles.overview}>
+    <div className={styles.overview}>
       <Topbar search={search} setSearch={setSearch} setData={setData} setMovieId={setMovieId}/>
       <Routes>
         <Route path='/' element={<Top20 setMovieId={setMovieId}/>}/>

@@ -7,9 +7,9 @@ export const Results =({data, setMovieId}) => {
         <div>
             {data &&
             
-            <div class={styles.grid}>
+            <div className={styles.grid}>
                 {data.map((movie, id) => 
-                <div class={styles.movie} key={id} onClick={() => setMovieId(movie.id)}>
+                <div className={styles.movie} key={id} onClick={() => setMovieId(movie.id)}>
                     <Link to={`/movie/${movie.id}`}>
                     {movie.poster_path ? 
                     <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
@@ -22,8 +22,8 @@ export const Results =({data, setMovieId}) => {
                     />
                     </div>
                     }
-                    <div class={styles.text}>
-                        <p class={styles.title}>{movie.title}</p>
+                    <div className={styles.text}>
+                        <p className={styles.title}>{movie.title}</p>
                         <Average average={movie.vote_average}/>
                     </div>
                     </Link>

@@ -37,7 +37,7 @@ console.log(data)
                     <p>{formatRun()}</p>
                 </div>
                 <div className={styles.genres}>
-                {data.genres && data.genres.map((genre) => <p className={styles.genre}>{genre.name}</p>)}
+                {data.genres && data.genres.map((genre, id) => <p className={styles.genre} key={id}>{genre.name}</p>)}
                 </div>
                 <div className={styles.page}><a href={data.homepage}>{data.homepage}</a></div>
                 <p className={styles.overview}>{data.overview}</p>
