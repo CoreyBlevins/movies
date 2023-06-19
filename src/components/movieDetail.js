@@ -42,6 +42,15 @@ console.log(data)
                 <div className={styles.page}><a href={data.homepage}>{data.homepage}</a></div>
                 <p className={styles.overview}>{data.overview}</p>
             </div>
+            <div className={styles.tabBox}>
+                <div className={styles.tabs}>
+                <div className={styles.tab}>images</div>
+                <div className={styles.tab}>video</div>
+                <div className={styles.tab}>cast</div>
+                <div className={styles.tab}>info</div>
+                </div>
+                <div className={styles.box}></div>
+            </div>
         </div>
     )
 }
@@ -58,5 +67,9 @@ const styles = {
     genres: 'flex',
     genre: 'mr-2 mt-2',
     page: 'mt-2 text-blue-200',
-    overview: 'mt-2 w-1/3'
+    overview: 'mt-2 w-1/3',
+    tabBox: 'absolute bottom-0 left-0 w-full h-96 z-10 ',
+    tabs: 'flex',
+    tab: 'flex first:ml-4 rounded-t-lg h-12 w-24 bg-zinc-800 first:opacity-80 opacity-50 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
+    box: ' w-full h-full bg-zinc-800 opacity-80',
 }
