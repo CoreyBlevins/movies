@@ -39,7 +39,7 @@ console.log(data)
                 <div className={styles.genres}>
                 {data.genres && data.genres.map((genre, id) => <p className={styles.genre} key={id}>{genre.name}</p>)}
                 </div>
-                <div className={styles.page}><a href={data.homepage}>{data.homepage}</a></div>
+                <div className={styles.page}><a href={data.homepage} target="_blank" rel="noreferrer">{data.homepage}</a></div>
                 <p className={styles.overview}>{data.overview}</p>
             </div>
             <div className={styles.tabBox}>

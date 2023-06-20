@@ -1,12 +1,17 @@
-
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import { getQuery } from "./requests"
 
 export const Topbar = ({ search, setSearch, setData }) => {
+    const [input, setInput] = useState('')
+    const navigate = useNavigate()
 
-    function handleSearch(query) {
-        getQuery(query).then(res => res && setData(res.data.results))
-    }
+    useEffect(()=> {
+        if (search) {
+            getQuery(search).then(res => res && setData(res.data.results))
+            navigate(`/results/${search}`)
+        }
+    }, [search])
 
     return (
         <div>
@@ -15,10 +20,8 @@ export const Topbar = ({ search, setSearch, setData }) => {
                     <Link to='/'>
                         <button className='mr-10 bg-sky-600'>home</button>
                     </Link>
-                    <input className={styles.input} type='text' autoComplete='off' onChange={e => setSearch(e.target.value)}></input>
-                    <Link to={`/results/${search}`}>
-                        <button className={styles.searchBtn} onClick={() => handleSearch(search)}>🔎</button>
-                    </Link>
+                    <input className={styles.input} type='text' autoComplete='off' onChange={e => setInput(e.target.value)}></input>
+                    <button className={styles.searchBtn} onClick={() => setSearch(input)}>🔎</button>
                 </div>
             </div>
         </div>
