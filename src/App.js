@@ -1,5 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { Topbar } from './components/topbar';
 import { Top20 } from './components/top20';
 import { MovieDetail } from './components/movieDetail';
@@ -18,6 +19,7 @@ function App() {
         <Route path={`/movie/${movieId}`} element={<MovieDetail movieId={movieId}/>}/>
         <Route path={`/results/${search}`} element={<Results data={data} setMovieId={setMovieId}/>}/>
       </Routes>
+      <Toaster/>
     </div>
   );
 }

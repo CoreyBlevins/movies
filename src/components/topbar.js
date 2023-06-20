@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
+import { toast } from "react-hot-toast"
 import { getQuery } from "./requests"
+
 
 export const Topbar = ({ search, setSearch, setData }) => {
     const [input, setInput] = useState('')
+    const [lastSearch, setLastSearch] = useState('')
     const navigate = useNavigate()
+    let location = useLocation()
 
     useEffect(()=> {
         if (search) {
-            getQuery(search).then(res => res && setData(res.data.results))
-            navigate(`/results/${search}`)
+            getQuery(search).then(res => res.data.results.length > 0 ? 
+                (setData(res.data.results), navigate(`/results/${search}`), setLastSearch(search)) : 
+                (location.pathname.includes('/results') ? 
+                (setSearch(lastSearch), toast('No results found.')) :
+                (toast('No results found.'))))
         }
     }, [search])
 
