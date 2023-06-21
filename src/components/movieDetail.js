@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
-import { getCredits, getDetails, getImages, getVideos } from "./requests"
+import { getCredits, getDetails, getImages, getRecommendations, getVideos } from "./requests"
 import { DetailsContent } from "./detailsContent"
 
 
-export const MovieDetail = ({movieId}) => {
+export const MovieDetail = ({movieId, setMovieId}) => {
     const [data, setData] = useState([])
     const [images, setImages] = useState([])
     const [videos, setVideos] = useState([])
     const [credits, setCredits] = useState([])
+    const [recommended, setRecommended] = useState([])
     const [selectedTab, setSelectedTab] = useState(0)
     const content = ['info', 'posters', 'backdrops', 'videos', 'cast', 'similar']
     
@@ -16,6 +17,7 @@ export const MovieDetail = ({movieId}) => {
         getImages(movieId).then(res => setImages(res.data))
         getVideos(movieId).then(res => setVideos(res.data.results))
         getCredits(movieId).then(res => setCredits(res.data))
+        getRecommendations(movieId).then(res => setRecommended(res.data.results))
     }, [movieId])
 
     function formatRelease () {
@@ -34,7 +36,7 @@ export const MovieDetail = ({movieId}) => {
         return `${hours}hrs ${minutes}mins`
     }}
 
-console.log('d', data, 'i', images, 'v', videos, 'c', credits)
+console.log('d', data, 'i', images, 'v', videos, 'c', credits, 'r', recommended)
     return (
         <div>
         <div className={styles.container}>
@@ -64,7 +66,15 @@ console.log('d', data, 'i', images, 'v', videos, 'c', credits)
                 )}
             </div>
         </div>
-            <DetailsContent data={data} images={images} videos={videos} credits={credits} selectedTab={selectedTab}/>
+            <DetailsContent 
+            data={data} 
+            images={images} 
+            videos={videos} 
+            credits={credits} 
+            recommended={recommended} 
+            selectedTab={selectedTab}
+            setMovieId={setMovieId}
+            />
         </div>
     )
 }

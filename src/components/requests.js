@@ -102,6 +102,21 @@ export const getCredits = (movieId) => {
         }
       };
       const response = axios.request(options)
-      return response
-      
+      return response   
 }
+
+export const getRecommendations = (movieId) => {
+const url = `https://api.themoviedb.org/3/movie/${movieId}/recommendations`
+const options = {
+    method: 'GET',
+    url: url,
+    params: {language: 'en-US', page: '1'},
+    headers: {
+      accept: 'application/json',
+      Authorization: token, 
+    }
+  };
+  const response = axios.request(options)
+  return response
+}
+  

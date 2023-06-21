@@ -1,6 +1,7 @@
 import { Average } from "./average"
+import { Results } from "./results"
 
-export const DetailsContent = ({ data, images, videos, credits, selectedTab }) => {
+export const DetailsContent = ({ data, images, videos, credits, recommended, selectedTab, setMovieId }) => {
 
     function formatNumber(numberString) {
         const formatted = Number(numberString).toLocaleString('en-US', {
@@ -138,6 +139,10 @@ export const DetailsContent = ({ data, images, videos, credits, selectedTab }) =
                         </div>
                      </div>
                     )}
+                </div>
+
+                <div className={selectedTab === 5 ? `${styles.similarBox}` : 'hidden'}>
+                    <Results data={recommended.slice(0, 20)} setMovieId={setMovieId}/>
 
                 </div>
 
@@ -186,5 +191,4 @@ const styles = {
     person: 'flex text-white m-4 w-[98vw] sm:w-[46vw] bg-gradient-to-br from-zinc-700 to-zinc-800',
     headshot: 'h-52',
     personInfo: 'mx-4 mt-4',
-
 }
