@@ -89,3 +89,19 @@ export const getVideos = (movieId) => {
       const response = axios.request(options)
       return response
 }
+
+export const getCredits = (movieId) => {
+    const url= `https://api.themoviedb.org/3/movie/${movieId}/credits`
+    const options = {
+        method: 'GET',
+        url: url,
+        params: {language: 'en-US'},
+        headers: {
+          accept: 'application/json',
+          Authorization: token, 
+        }
+      };
+      const response = axios.request(options)
+      return response
+      
+}

@@ -1,6 +1,6 @@
 import { Average } from "./average"
 
-export const DetailsContent = ({ data, images, videos, selectedTab }) => {
+export const DetailsContent = ({ data, images, videos, credits, selectedTab }) => {
 
     function formatNumber(numberString) {
         const formatted = Number(numberString).toLocaleString('en-US', {
@@ -127,6 +127,20 @@ export const DetailsContent = ({ data, images, videos, selectedTab }) => {
                     )}
                 </div>
 
+                <div className={selectedTab === 4 ? `${styles.castBox}` : 'hidden'}>
+                    {credits?.cast?.slice(0,20).map((person, id) => 
+                     <div className={styles.person} key={id}>
+                        <img src={`https://image.tmdb.org/t/p/original${person.profile_path}`} alt={person.name}
+                        className={styles.headshot}/>
+                        <div className={styles.personInfo}>
+                        <p>{person.name}</p>
+                        <p>{person.character}</p>
+                        </div>
+                     </div>
+                    )}
+
+                </div>
+
             </div>
         </div>
     )
@@ -163,8 +177,14 @@ const styles = {
     poster: 'w-[46vw] sm:w-[22vw] xl:w-[11vw] mx-[0.1vw] mt-4',
     //Backdrop styles
     backdropBox: 'flex flex-wrap justify-evenly',
-    backdrop: 'w-[48vw] my-2',
+    backdrop: 'w-[98vw] md:w-[48vw] my-2',
     //Video styles
     videoBox: 'flex flex-wrap justify-evenly',
     video: ' w-[98vw] md:w-[48vw] h-[400px] my-2 ',
+    //Cast styles
+    castBox: 'flex flex-wrap justify-evenly',
+    person: 'flex text-white m-4 w-[98vw] sm:w-[46vw] bg-gradient-to-br from-zinc-700 to-zinc-800',
+    headshot: 'h-52',
+    personInfo: 'mx-4 mt-4',
+
 }
