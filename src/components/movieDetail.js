@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react"
-import { getDetails, getImages } from "./requests"
+import { getDetails, getImages, getVideos } from "./requests"
 import { DetailsContent } from "./detailsContent"
 
 export const MovieDetail = ({movieId}) => {
     const [data, setData] = useState([])
     const [images, setImages] = useState([])
+    const [videos, setVideos] = useState([])
     const [selectedTab, setSelectedTab] = useState(0)
     const content = ['info', 'posters', 'backdrops', 'videos', 'cast', 'similar']
     
     useEffect(() => {
         getDetails(movieId).then(res => setData(res.data))
         getImages(movieId).then(res => setImages(res.data))
+        getVideos(movieId).then(res => setVideos(res.data.results))
     }, [movieId])
 
     function formatRelease () {
@@ -29,7 +31,7 @@ export const MovieDetail = ({movieId}) => {
         return `${hours}hrs ${minutes}mins`
     }}
 
-console.log(data, images)
+console.log('d', data, 'i', images, 'v', videos)
     return (
         <div>
         <div className={styles.container}>
@@ -59,7 +61,7 @@ console.log(data, images)
                 )}
             </div>
         </div>
-            <DetailsContent data={data} images={images} selectedTab={selectedTab}/>
+            <DetailsContent data={data} images={images} videos={videos} selectedTab={selectedTab}/>
         </div>
     )
 }

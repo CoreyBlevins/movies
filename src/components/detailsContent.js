@@ -1,7 +1,6 @@
 import { Average } from "./average"
 
-export const DetailsContent = ({ data, images, selectedTab }) => {
-    console.log('d', data)
+export const DetailsContent = ({ data, images, videos, selectedTab }) => {
 
     function formatNumber(numberString) {
         const formatted = Number(numberString).toLocaleString('en-US', {
@@ -16,15 +15,17 @@ export const DetailsContent = ({ data, images, selectedTab }) => {
             const perc = (Number(data.budget) / Number(data.revenue)) * 100
             const percObj = {
                 width: `${perc}%`,
-                backgroundColor: 'rgb(34 197 94)',
+                backgroundColor: 'rgb(3 105 161)',
                 maxWidth: '100%',
-                text: Math.floor(perc)
+                text: `${Math.floor(100 - perc)}% profit`
             }
             if (perc > 100) {
                 percObj.backgroundColor = 'rgb(239 68 68)'
+                percObj.text = `${Math.floor(perc)}% deficit`
             }
             if (isNaN(perc)) {
                 percObj.backgroundColor = 'rgb(51 65 85)'
+                percObj.text = 'Profits unavailable'
             }
             return percObj
         }
@@ -47,7 +48,7 @@ export const DetailsContent = ({ data, images, selectedTab }) => {
                                     <p>{formatNumber(data.revenue)}</p>
                                 </div>
                             </div>
-                            <p>{budgetPercent().text}%</p>
+                            <p>{budgetPercent().text}</p>
                             <div className={styles.progressBackground}>
                                 <div className={styles.progress} style={budgetPercent()}></div>
                             </div>
@@ -109,9 +110,20 @@ export const DetailsContent = ({ data, images, selectedTab }) => {
                 </div>
 
                 <div className={selectedTab === 2 ? `${styles.backdropBox}` : 'hidden'}>
-                    {images?.backdrops?.slice(0, 14).map((image, id) =>
+                    {images?.backdrops?.slice(0, 16).map((image, id) =>
                         <img src={`https://image.tmdb.org/t/p/original${image.file_path}`} alt={`${data.title} backdrop`}
                             className={styles.backdrop} key={id} />
+                    )}
+                </div>
+
+                <div className={selectedTab === 3 ? `${styles.videoBox}` : 'hidden'}>
+                    {videos?.slice(0, 8).map((video, id) =>
+
+                        <iframe src={`https://www.youtube.com/embed/${video.key}`} title={video.name}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className={styles.video} key={id} />
+
                     )}
                 </div>
 
@@ -129,17 +141,17 @@ const styles = {
     moneyText: 'text-center',
     budget: 'm-2',
     revenue: 'm-2',
-    progressBackground: 'mt-4 w-1/2 bg-slate-700 rounded-full h-2.5',
-    progress: 'bg-blue-600 h-2.5 rounded-full',
+    progressBackground: 'mt-4 w-1/2 bg-green-500 rounded-full h-2.5',
+    progress: 'h-2.5 rounded-full',
     //vote styles
     vote: 'flex flex-col items-center justify-center w-full h-full bg-gradient-to-br from-zinc-700 to-zinc-800',
     averageInfo: 'flex',
     voteText: 'm-2 text-center',
     // Production styles
     producers: 'grid grid-cols-2 gap-4 items-center bg-gradient-to-br from-zinc-700 to-zinc-800 rounded p-2',
-    company: 'text-center text-white',
-    logo: 'w-[15vw] m-2 ',
-    logoPlaceholder: 'w-[15vw] m-2 opacity-0',
+    company: 'flex flex-col text-white justify-center items-center',
+    logo: 'w-[8vw] m-4 ',
+    logoPlaceholder: 'w-[8vw] m-2 opacity-0',
     //Placeholder background
     background: 'bg-gradient-to-br from-zinc-800 to-zinc-900 rounded',
     //Collection styles
@@ -152,4 +164,7 @@ const styles = {
     //Backdrop styles
     backdropBox: 'flex flex-wrap justify-evenly',
     backdrop: 'w-[48vw] my-2',
+    //Video styles
+    videoBox: 'flex flex-wrap justify-evenly',
+    video: ' w-[98vw] md:w-[48vw] h-[400px] my-2 ',
 }
