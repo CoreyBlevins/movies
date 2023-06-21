@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react"
-import { getDetails } from "./requests"
+import { getDetails, getImages } from "./requests"
+import { DetailsContent } from "./detailsContent"
 
 export const MovieDetail = ({movieId}) => {
     const [data, setData] = useState([])
+    const [images, setImages] = useState([])
+    const [selectedTab, setSelectedTab] = useState(0)
+    const content = ['info', 'posters', 'backdrops', 'videos', 'cast', 'similar']
     
     useEffect(() => {
         getDetails(movieId).then(res => setData(res.data))
+        getImages(movieId).then(res => setImages(res.data))
     }, [movieId])
 
     function formatRelease () {
@@ -24,55 +29,54 @@ export const MovieDetail = ({movieId}) => {
         return `${hours}hrs ${minutes}mins`
     }}
 
-console.log(data)
+console.log(data, images)
     return (
+        <div>
         <div className={styles.container}>
             <img src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} className={styles.img} alt={data.title}/>
             <div className={styles.text}>
                 <p className={styles.title}>{data.title}</p>
                 <p className={styles.tag}>{data.tagline}</p>
                 <div className={styles.info}>
-                    <p className={styles.release}>{formatRelease()}</p>
+                    <p>{formatRelease()}</p>
                     <p className={styles.average}>{String(data.vote_average).slice(0, 3)}/10</p>
                     <p>{formatRun()}</p>
                 </div>
                 <div className={styles.genres}>
-                {data.genres && data.genres.map((genre, id) => <p className={styles.genre} key={id}>{genre.name}</p>)}
+                    {data.genres && data.genres.map((genre, id) => 
+                        <p className={styles.genre} key={id}>{genre.name}</p>
+                    )}
                 </div>
                 <div className={styles.page}><a href={data.homepage} target="_blank" rel="noreferrer">{data.homepage}</a></div>
                 <p className={styles.overview}>{data.overview}</p>
             </div>
-            <div className={styles.tabBox}>
-                <div className={styles.tabs}>
-                <div className={styles.tab}>images</div>
-                <div className={styles.tab}>video</div>
-                <div className={styles.tab}>cast</div>
-                <div className={styles.tab}>info</div>
-                <div className={styles.tab}>similar</div>
-                </div>
-                <div className={styles.box}>
-
-                </div>
+            <div className={styles.tabs}>
+                {content.map((tab, id) => 
+                    <div className={selectedTab === id ? `${styles.selectedTab}` : `${styles.tab}`} key={id} 
+                    onClick={() => setSelectedTab(id)}>
+                        {tab}
+                    </div>
+                )}
             </div>
+        </div>
+            <DetailsContent data={data} images={images} selectedTab={selectedTab}/>
         </div>
     )
 }
 
 const styles = {
-    container: 'min-h-screen',
-    img: 'opacity-70',
-    text: 'absolute top-40 left-4 text-white z-10 drop-shadow-lg',
+    container: 'relative',
+    img: 'opacity-70 h-[80vh] w-full object-cover object-top',
+    text: 'absolute top-20 left-4 text-white z-10 drop-shadow-lg',
     title: 'text-5xl',
     tag: 'text-2xl mt-2',
     info: 'flex mt-2 text-md',
     average: 'mx-4',
-    release: '',
     genres: 'flex',
     genre: 'mr-2 mt-2',
     page: 'mt-2 text-blue-200',
-    overview: 'mt-2 w-1/3',
-    tabBox: 'fixed bottom-0 left-0 w-full h-80 z-10 ',
-    tabs: 'flex',
-    tab: 'flex first:ml-4 rounded-t-lg h-12 w-24 bg-zinc-800 first:opacity-60 opacity-40 hover:opacity-60 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
-    box: 'w-full h-full bg-zinc-800 opacity-60',
+    overview: 'mt-2 w-4/5 md:w-1/3',
+    tabs: 'flex absolute bottom-0',
+    tab: 'flex first:ml-4 rounded-t-lg h-12 w-24 bg-zinc-800 opacity-50 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
+    selectedTab: 'flex first:ml-4 rounded-t-lg h-12 w-24 bg-zinc-800 opacity-100 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
 }
