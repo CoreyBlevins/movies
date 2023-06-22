@@ -66,6 +66,7 @@ export const getImages = (movieId) => {
     const options = {
         method: 'GET',
         url: url,
+        params: {language: 'en,null'},
         headers: {
             accept: 'application/json',
             Authorization: token

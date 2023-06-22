@@ -20,7 +20,7 @@ export const Top20 = ({setMovieId}) => {
                     <Link to={`/movie/${movie.id}`}>
                     <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title}/>
                     <div className={styles.text}>
-                        <p className={styles.title}>{movie.title}</p>
+                        <p className={styles.title}>{id + 1}. {movie.title}</p>
                         <Average average={movie.vote_average} />
                     </div>
                     </Link>
