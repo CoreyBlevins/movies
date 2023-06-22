@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import { getCredits, getDetails, getImages, getRecommendations, getVideos } from "./requests"
 import { DetailsContent } from "./detailsContent"
 
@@ -11,6 +12,12 @@ export const MovieDetail = ({ movieId, setMovieId }) => {
     const [recommended, setRecommended] = useState([])
     const [selectedTab, setSelectedTab] = useState(0)
     const content = ['info', 'posters', 'backdrops', 'videos', 'cast', 'similar']
+    const location = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0,0)
+        setSelectedTab(0)
+    }, [location])
 
     useEffect(() => {
         getDetails(movieId).then(res => setData(res.data))
