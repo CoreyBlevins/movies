@@ -22,16 +22,29 @@ export const DetailsContent = ({ data, images, videos, credits, recommended, sel
     return (
         <div>
             <div className={styles.box}>
-                <div className={selectedTab === 0 ? `${styles.infoBox}` : 'hidden'}>
-                    <Collection collection={data.belongs_to_collection} />
-                    <div className={styles.info}>
-                    <InfoText data={data} credits={credits}/>
-                    <VoteAverage data={data} formatNumber={formatNumber} />
 
+                    <div className={selectedTab === 0 ? `${styles.mobileInfoBox}` : 'hidden'}>
+                        <div className={styles.mobileInfo}>
+                            <InfoText data={data} credits={credits} />
+                            <VoteAverage data={data} formatNumber={formatNumber} />
+
+                        </div>
+                        <Collection collection={data.belongs_to_collection} />
                     </div>
-                    {/* <Budget data={data} formatNumber={formatNumber} /> */}
+                    
+                    <div className={selectedTab === 0 ? `${styles.infoBox}` : 'hidden'}>
+                        <Collection collection={data.belongs_to_collection} />
+                        <div className={styles.info}>
+                            <InfoText data={data} credits={credits} />
+                            <VoteAverage data={data} formatNumber={formatNumber} />
 
-                    {/* <div className={styles.producers}>
+                        </div>
+                    </div>
+                
+
+                {/* <Budget data={data} formatNumber={formatNumber} /> */}
+
+                {/* <div className={styles.producers}>
                         {data.production_companies?.map((co, id) =>
                             <div className={styles.company} key={id}>
                                 {co.logo_path !== null ?
@@ -46,25 +59,27 @@ export const DetailsContent = ({ data, images, videos, credits, recommended, sel
                             </div>
                         )}
                     </div> */}
-                </div>
-
-                <Posters posters={images.posters} title={data.title} selectedTab={selectedTab} />
-                <Backdrops backdrops={images.backdrops} title={data.title} selectedTab={selectedTab} />
-                <Videos videos={videos} selectedTab={selectedTab} />
-                <Cast credits={credits} selectedTab={selectedTab} />
-
-                <div className={selectedTab === 5 ? `${styles.similarBox}` : 'hidden'}>
-                    <Results data={recommended.slice(0, 20)} setMovieId={setMovieId} />
-                </div>
-
             </div>
+
+            <Posters posters={images.posters} title={data.title} selectedTab={selectedTab} />
+            <Backdrops backdrops={images.backdrops} title={data.title} selectedTab={selectedTab} />
+            <Videos videos={videos} selectedTab={selectedTab} />
+            <Cast credits={credits} selectedTab={selectedTab} />
+
+            <div className={selectedTab === 5 ? `${styles.similarBox}` : 'hidden'}>
+                <Results data={recommended.slice(0, 20)} setMovieId={setMovieId} />
+            </div>
+
         </div>
+    
     )
 }
 const styles = {
     box: 'w-full bg-zinc-800 pt-4',
-    infoBox: 'flex pb-10 px-4',
+    infoBox: 'pb-10 px-4 hidden sm:flex',
     info: 'p-2 w-[60vw]',
+    mobileInfoBox: 'pb-10 px-4 sm:hidden',
+    mobileInfo: 'flex flex-col',
     // Production styles
     producers: 'flex flex-col items-center bg-gradient-to-br from-zinc-700 to-zinc-800 rounded p-2',
     company: 'flex flex-col text-white justify-center items-center',

@@ -21,6 +21,6 @@ export const Collection = ({collection}) => {
  )
 }
 const styles = {
-    collection: 'flex flex-col w-fit text-center mx-4 text-white bg-gradient-to-br from-zinc-700 to-zinc-800 pb-3',
-    collectionPoster: 'w-[20vw] mb-3',
+    collection: 'flex flex-col w-fit text-center mt-2 sm:mt-0 mx-4 text-white bg-gradient-to-br from-zinc-700 to-zinc-800 pb-3',
+    collectionPoster: 'md:w-[30vw] xl:w-[20vw] mb-3',
 }

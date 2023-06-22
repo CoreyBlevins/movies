@@ -58,7 +58,7 @@ const styles = {
     text: 'absolute top-20 left-4 text-white z-10 drop-shadow-lg',
     title: 'text-5xl',
     tag: 'text-2xl mt-2',
-    tabs: 'flex absolute bottom-0',
-    tab: 'flex first:ml-4 rounded-t-lg h-12 w-24 bg-zinc-800 opacity-50 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
-    selectedTab: 'flex first:ml-4 rounded-t-lg h-12 w-24 bg-zinc-800 opacity-100 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
+    tabs: 'flex absolute bottom-0 w-screen sm:w-fit overflow-scroll sm:overflow-hidden',
+    tab: 'flex sm:first:ml-4 rounded-t-lg h-12 p-2 w-24 bg-zinc-800 opacity-50 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
+    selectedTab: 'flex sm:first:ml-4 rounded-t-lg h-12 p-2 w-24 bg-zinc-800 opacity-100 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
 }

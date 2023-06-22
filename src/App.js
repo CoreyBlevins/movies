@@ -27,5 +27,5 @@ function App() {
 export default App;
 
 const styles = {
-  overview: 'bg-gradient-to-br from-zinc-800 to-neutral-900 min-h-screen pb-4'
+  overview: 'bg-gradient-to-br from-zinc-800 to-neutral-900 min-h-screen min-w-screen pb-4'
 }

@@ -70,13 +70,13 @@ export const InfoText = ({ data, credits }) => {
     )
 }
 const styles = {
-    genres: 'flex text-white',
+    genres: 'flex text-white flex-wrap',
     genre: 'm-2',
     time: 'flex ml-2 text-white',
     release: 'mr-4',
     page: 'm-2 text-sky-500',
-    overview: 'text-white m-2 w-[50vw]',
+    overview: 'text-white m-2 md:w-[50vw]',
     job: 'mr-2 text-green-500',
-    crew: 'flex m-2 text-white',
+    crew: 'flex m-2 text-white flex-wrap',
     title: 'mx-2',
 }
