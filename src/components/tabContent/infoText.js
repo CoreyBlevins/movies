@@ -68,13 +68,14 @@ export const InfoText = ({ data, credits }) => {
             </div>
             <div className={styles.crew}>
                 <p className={styles.job}>Production</p>
-                {data.production_companies?.map((company, id) => 
-                <p className={styles.title} key={id}>{company.name}</p>)}
+                {data.production_companies?.map((company, id) =>
+                    <p className={styles.title} key={id}>{company.name}</p>)}
 
             </div>
         </div>
     )
 }
+
 const styles = {
     genres: 'flex text-white flex-wrap',
     genre: 'm-2',

@@ -14,7 +14,7 @@ export const MovieDetail = ({ movieId, setMovieId }) => {
     const location = useLocation()
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         setSelectedTab(0)
     }, [location])
 
@@ -30,9 +30,9 @@ export const MovieDetail = ({ movieId, setMovieId }) => {
         <div>
             <div className={styles.container}>
                 {data.backdrop_path ?
-                <img src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} className={styles.img} alt={data.title} />
-                :
-                <div className={styles.placeholder}></div>
+                    <img src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} className={styles.img} alt={data.title} />
+                    :
+                    <div className={styles.placeholder}></div>
                 }
                 <div className={styles.text}>
                     <p className={styles.title}>{data.title}</p>

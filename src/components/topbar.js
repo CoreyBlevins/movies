@@ -29,7 +29,7 @@ export const Topbar = ({ search, setSearch, setData }) => {
     return (
         <div>
             <div className={styles.container}>
-                <div class='absolute left-4 top-2'>
+                <div class={styles.tmdb}>
                     <a href='https://www.themoviedb.org/?language=en-US'>
                         <TMDBLogo />
                     </a>
@@ -55,6 +55,7 @@ export const Topbar = ({ search, setSearch, setData }) => {
 
 const styles = {
     container: 'flex justify-end items-center bg-black drop-shadow-lg',
+    tmdb: 'absolute left-4 top-2',
     header: 'text-xl',
     form: 'flex items-center mr-4',
     search: 'relative pr-4',

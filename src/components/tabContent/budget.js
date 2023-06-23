@@ -47,10 +47,10 @@ export const Budget = ({ data, formatNumber }) => {
                     <div className={styles.money}>
 
                         <div className={styles.revenue}>
-                                <div className={styles.legend}>
-                                    <div className={styles.bullet} style={{ backgroundColor: format.bullet }}></div>
-                                    <p>Revenue</p>
-                                </div>
+                            <div className={styles.legend}>
+                                <div className={styles.bullet} style={{ backgroundColor: format.bullet }}></div>
+                                <p>Revenue</p>
+                            </div>
                             <p>{formatNumber(data.revenue)}</p>
                         </div>
 
@@ -77,22 +77,21 @@ export const Budget = ({ data, formatNumber }) => {
                         </div>
 
                         <div className={styles.revenue}>
-                                <div className={styles.legend}>
-                                    <div className={styles.bullet} style={{ backgroundColor: format.bullet }}></div>
-                                    <p>Revenue</p>
-                                </div>
+                            <div className={styles.legend}>
+                                <div className={styles.bullet} style={{ backgroundColor: format.bullet }}></div>
+                                <p>Revenue</p>
+                            </div>
                             <p>{formatNumber(data.revenue)}</p>
                         </div>
 
                     </div>
                 }
-
-
                 <p>{format.text}</p>
             </div>
         </div>
     )
 }
+
 const styles = {
     metrics: 'flex w-full flex-col md:items-center text-white ml-4 mb-2',
     money: 'flex md:items-center md:justify-center gap-4 mb-2',

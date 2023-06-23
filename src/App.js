@@ -13,13 +13,13 @@ function App() {
 
   return (
     <div className={styles.overview}>
-      <Topbar search={search} setSearch={setSearch} setData={setData} setMovieId={setMovieId}/>
+      <Topbar search={search} setSearch={setSearch} setData={setData} setMovieId={setMovieId} />
       <Routes>
-        <Route path='/' element={<Top20 setMovieId={setMovieId}/>}/>
-        <Route path={`/movie/${movieId}`} element={<MovieDetail movieId={movieId} setMovieId={setMovieId}/>}/>
-        <Route path={`/results/${search}`} element={<Results data={data} setMovieId={setMovieId}/>}/>
+        <Route path='/' element={<Top20 setMovieId={setMovieId} />} />
+        <Route path={`/movie/${movieId}`} element={<MovieDetail movieId={movieId} setMovieId={setMovieId} />} />
+        <Route path={`/results/${search}`} element={<Results data={data} setMovieId={setMovieId} />} />
       </Routes>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }

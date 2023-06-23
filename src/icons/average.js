@@ -31,6 +31,5 @@ export const Average = ({ average }) => {
             </div>
         )
     }
-
     return getColoredScore()
 }

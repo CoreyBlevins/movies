@@ -18,29 +18,28 @@ export const DetailsContent = ({ data, images, videos, credits, recommended, sel
         return formatted.slice(0, -3)
     }
 
-
     return (
         <div>
             <div className={styles.box}>
-                    <div className={selectedTab === 0 ? `${styles.mobileInfoBox}` : 'hidden'}>
-                        <div className={styles.mobileInfo}>
-                            <InfoText data={data} credits={credits} />
+                <div className={selectedTab === 0 ? `${styles.mobileInfoBox}` : 'hidden'}>
+                    <div className={styles.mobileInfo}>
+                        <InfoText data={data} credits={credits} />
+                        <VoteAverage data={data} formatNumber={formatNumber} />
+                        <Budget data={data} formatNumber={formatNumber} />
+                    </div>
+                    <Collection collection={data.belongs_to_collection} />
+                </div>
+
+                <div className={selectedTab === 0 ? `${styles.infoBox}` : 'hidden'}>
+                    <Collection collection={data.belongs_to_collection} />
+                    <div className={styles.info}>
+                        <InfoText data={data} credits={credits} />
+                        <div className='flex'>
                             <VoteAverage data={data} formatNumber={formatNumber} />
                             <Budget data={data} formatNumber={formatNumber} />
                         </div>
-                        <Collection collection={data.belongs_to_collection} />
                     </div>
-                    
-                    <div className={selectedTab === 0 ? `${styles.infoBox}` : 'hidden'}>
-                        <Collection collection={data.belongs_to_collection} />
-                        <div className={styles.info}>
-                            <InfoText data={data} credits={credits} />
-                            <div className='flex'>
-                            <VoteAverage data={data} formatNumber={formatNumber} />
-                            <Budget data={data} formatNumber={formatNumber} />
-                            </div>
-                        </div>
-                    </div>
+                </div>
             </div>
 
             <Posters posters={images.posters} title={data.title} selectedTab={selectedTab} />
@@ -53,7 +52,7 @@ export const DetailsContent = ({ data, images, videos, credits, recommended, sel
             </div>
 
         </div>
-    
+
     )
 }
 const styles = {

@@ -5,7 +5,7 @@ export const VoteAverage = ({ data, formatNumber }) => {
         <div>
             <div className={styles.vote}>
                 <div className={styles.score}>
-                <Average average={data.vote_average} />
+                    <Average average={data.vote_average} />
                 </div>
                 <div className={styles.averageInfo}>
                     <div className='flex items-center text-white'>
@@ -22,6 +22,7 @@ export const VoteAverage = ({ data, formatNumber }) => {
         </div>
     )
 }
+
 const styles = {
     vote: 'flex',
     score: 'm-2 h-20 w-20 text-2xl',

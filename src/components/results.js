@@ -1,35 +1,34 @@
 import { Link } from "react-router-dom"
 import { Average } from "../icons/average"
 
-export const Results =({data, setMovieId}) => {
+export const Results = ({ data, setMovieId }) => {
 
     return (
         <div>
             {data &&
-            
-            <div className={styles.grid}>
-                {data.map((movie, id) => 
-                <div className={styles.movie} key={id} onClick={() => setMovieId(movie.id)}>
-                    <Link to={`/movie/${movie.id}`}>
-                    {movie.poster_path ? 
-                    <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
-                    alt={movie.title}
-                    />
-                    : 
-                    <div className={styles.background}>
-                    <img src={`https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg`} 
-                    alt={movie.title} className={styles.placeholder} 
-                    />
-                    </div>
-                    }
-                    <div className={styles.text}>
-                        <p className={styles.title}>{movie.title}</p>
-                        <Average average={movie.vote_average}/>
-                    </div>
-                    </Link>
+                <div className={styles.grid}>
+                    {data.map((movie, id) =>
+                        <div className={styles.movie} key={id} onClick={() => setMovieId(movie.id)}>
+                            <Link to={`/movie/${movie.id}`}>
+                                {movie.poster_path ?
+                                    <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                        alt={movie.title}
+                                    />
+                                    :
+                                    <div className={styles.background}>
+                                        <img src={`https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg`}
+                                            alt={movie.title} className={styles.placeholder}
+                                        />
+                                    </div>
+                                }
+                                <div className={styles.text}>
+                                    <p className={styles.title}>{movie.title}</p>
+                                    <Average average={movie.vote_average} />
+                                </div>
+                            </Link>
+                        </div>
+                    )}
                 </div>
-                )}
-            </div>
             }
         </div>
     )
