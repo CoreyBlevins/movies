@@ -3,6 +3,7 @@
 This project is deployed using GitHub Pages at https://coreyblevins.github.io/movies/.
 
 I built movie-time using [React](https://react.dev/) and [Tailwind](https://tailwindcss.com/). 
+All API calls are made to [The Movie Database](https://www.themoviedb.org/?language=en-US)
 
 Some other dependencies include:
 + [react-router](https://reactrouter.com/en/main)
