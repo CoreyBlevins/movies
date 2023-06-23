@@ -6,7 +6,6 @@ import { HouseIcon } from "../icons/house"
 import { TMDBLogo } from "../icons/logo"
 import { MagnifyingIcon } from "../icons/magnifyingGlass"
 
-
 export const Topbar = ({ search, setSearch, setData }) => {
     const [input, setInput] = useState('')
     const [lastSearch, setLastSearch] = useState('')
@@ -31,7 +30,9 @@ export const Topbar = ({ search, setSearch, setData }) => {
         <div>
             <div className={styles.container}>
                 <div class='absolute left-4 top-2'>
-                    <TMDBLogo />
+                    <a href='https://www.themoviedb.org/?language=en-US'>
+                        <TMDBLogo />
+                    </a>
                 </div>
                 <Link to='/'>
                     <HouseIcon />

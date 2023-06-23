@@ -35,7 +35,6 @@ export const Top20 = ({setMovieId}) => {
 const styles = {
     grid: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-2 m-4',
     movie: 'flex flex-col items-center text-center rounded cursor-pointer hover:bg-gradient-to-br from-zinc-700 to-zinc-800 ',
-    img: '',
     text: 'flex items-center justify-between text-white w-full p-2',
     title: 'font-medium text-left',
 }

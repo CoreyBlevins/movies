@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom"
 import { getCredits, getDetails, getImages, getRecommendations, getVideos } from "../api/getRequests"
 import { DetailsContent } from "./detailsContent"
 
-
 export const MovieDetail = ({ movieId, setMovieId }) => {
     const [data, setData] = useState([])
     const [images, setImages] = useState([])
@@ -26,8 +25,6 @@ export const MovieDetail = ({ movieId, setMovieId }) => {
         getCredits(movieId).then(res => setCredits(res.data))
         getRecommendations(movieId).then(res => setRecommended(res.data.results))
     }, [movieId])
-
-    console.log('d', data, 'i', images, 'v', videos, 'c', credits, 'r', recommended)
 
     return (
         <div>
