@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { getTop20 } from "./requests"
-import { Average } from "./average"
+import { getTop20 } from "../api/getRequests"
+import { Average } from "../icons/average"
 
 export const Top20 = ({setMovieId}) => {
     const [data, setData] = useState([])

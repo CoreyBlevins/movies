@@ -66,6 +66,12 @@ export const InfoText = ({ data, credits }) => {
                     <p className={styles.title} key={id}>{writer}</p>
                 )}
             </div>
+            <div className={styles.crew}>
+                <p className={styles.job}>Production</p>
+                {data.production_companies?.map((company, id) => 
+                <p className={styles.title} key={id}>{company.name}</p>)}
+
+            </div>
         </div>
     )
 }

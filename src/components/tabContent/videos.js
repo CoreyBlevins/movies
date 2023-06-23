@@ -16,5 +16,5 @@ export const Videos = ({videos, selectedTab}) => {
 }
 const styles = {
     videoBox: 'flex flex-wrap justify-evenly',
-    video: ' w-[98vw] md:w-[48vw] h-[400px] my-2 ',
+    video: ' w-[98vw] lg:w-[48vw] h-[400px] my-2 ',
 }

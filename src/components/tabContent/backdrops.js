@@ -13,5 +13,5 @@ export const Backdrops = ({backdrops, title, selectedTab}) => {
 }
 const styles = {
     backdropBox: 'flex flex-wrap justify-evenly',
-    backdrop: 'w-[98vw] md:w-[48vw] my-2',
+    backdrop: 'w-[98vw] lg:w-[48vw] my-2',
 }

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Average } from "./average"
+import { Average } from "../icons/average"
 
 export const Results =({data, setMovieId}) => {
 

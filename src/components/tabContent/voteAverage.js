@@ -1,4 +1,4 @@
-import { Average } from "../average"
+import { Average } from "../../icons/average"
 
 export const VoteAverage = ({ data, formatNumber }) => {
     return (
@@ -24,7 +24,7 @@ export const VoteAverage = ({ data, formatNumber }) => {
 }
 const styles = {
     vote: 'flex',
-    score: 'm-2 h-20 w-20',
+    score: 'm-2 h-20 w-20 text-2xl',
     averageInfo: 'flex flex-col justify-center',
     voteText: 'm-2',
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
-import { getCredits, getDetails, getImages, getRecommendations, getVideos } from "./requests"
+import { getCredits, getDetails, getImages, getRecommendations, getVideos } from "../api/getRequests"
 import { DetailsContent } from "./detailsContent"
 
 
@@ -32,7 +32,11 @@ export const MovieDetail = ({ movieId, setMovieId }) => {
     return (
         <div>
             <div className={styles.container}>
+                {data.backdrop_path ?
                 <img src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} className={styles.img} alt={data.title} />
+                :
+                <div className={styles.placeholder}></div>
+                }
                 <div className={styles.text}>
                     <p className={styles.title}>{data.title}</p>
                     <p className={styles.tag}>{data.tagline}</p>
@@ -68,4 +72,6 @@ const styles = {
     tabs: 'flex absolute bottom-0 w-screen sm:w-fit overflow-scroll sm:overflow-hidden',
     tab: 'flex sm:first:ml-4 rounded-t-lg h-12 p-2 w-24 bg-zinc-800 opacity-50 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
     selectedTab: 'flex sm:first:ml-4 rounded-t-lg h-12 p-2 w-24 bg-zinc-800 opacity-100 hover:opacity-90 border-r-2 border-zinc-900 text-white justify-center items-center cursor-pointer',
+    placeholder: 'opacity-70 h-[80vh] w-full bg-gradient-to-br from-zinc-700 to-zinc-800'
 }
+

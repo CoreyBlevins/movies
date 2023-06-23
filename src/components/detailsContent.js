@@ -22,12 +22,11 @@ export const DetailsContent = ({ data, images, videos, credits, recommended, sel
     return (
         <div>
             <div className={styles.box}>
-
                     <div className={selectedTab === 0 ? `${styles.mobileInfoBox}` : 'hidden'}>
                         <div className={styles.mobileInfo}>
                             <InfoText data={data} credits={credits} />
                             <VoteAverage data={data} formatNumber={formatNumber} />
-
+                            <Budget data={data} formatNumber={formatNumber} />
                         </div>
                         <Collection collection={data.belongs_to_collection} />
                     </div>
@@ -36,29 +35,12 @@ export const DetailsContent = ({ data, images, videos, credits, recommended, sel
                         <Collection collection={data.belongs_to_collection} />
                         <div className={styles.info}>
                             <InfoText data={data} credits={credits} />
+                            <div className='flex'>
                             <VoteAverage data={data} formatNumber={formatNumber} />
-
+                            <Budget data={data} formatNumber={formatNumber} />
+                            </div>
                         </div>
                     </div>
-                
-
-                {/* <Budget data={data} formatNumber={formatNumber} /> */}
-
-                {/* <div className={styles.producers}>
-                        {data.production_companies?.map((co, id) =>
-                            <div className={styles.company} key={id}>
-                                {co.logo_path !== null ?
-                                    <img src={`https://image.tmdb.org/t/p/original${co.logo_path}`}
-                                        alt={`${co.name} logo`} className={styles.logo} key={id} />
-                                    :
-                                    <div className={styles.background}>
-                                        <img src={`https://image.tmdb.org/t/p/original/h0rjX5vjW5r8yEnUBStFarjcLT4.png`}
-                                            alt={`${co.name} logo`} className={styles.logoPlaceholder} key={id} />
-                                    </div>}
-                                <p>{co.name}</p>
-                            </div>
-                        )}
-                    </div> */}
             </div>
 
             <Posters posters={images.posters} title={data.title} selectedTab={selectedTab} />
@@ -80,12 +62,4 @@ const styles = {
     info: 'p-2 w-[60vw]',
     mobileInfoBox: 'pb-10 px-4 sm:hidden',
     mobileInfo: 'flex flex-col',
-    // Production styles
-    producers: 'flex flex-col items-center bg-gradient-to-br from-zinc-700 to-zinc-800 rounded p-2',
-    company: 'flex flex-col text-white justify-center items-center',
-    logo: 'w-[8vw] m-4 ',
-    logoPlaceholder: 'w-[8vw] m-2 opacity-0',
-    //Placeholder background
-    background: 'bg-gradient-to-br from-zinc-800 to-zinc-900 rounded',
-
 }
