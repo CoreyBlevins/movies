@@ -2,6 +2,18 @@
 
 This project is deployed using GitHub Pages at https://coreyblevins.github.io/movies/.
 
+I built movie-time using [React](https://react.dev/) and [Tailwind](https://tailwindcss.com/). 
+
+Some other dependencies include:
++ [react-router](https://reactrouter.com/en/main)
+>for navigation across the website
++ [react-hot-toast](https://react-hot-toast.com/) 
+>for handling when no results are found
++ [gh-pages](https://github.com/tschaub/gh-pages) 
+>for deployment
+
+I had a blast on this week long project, and I hope you enjoy!
+
 
 # Getting Started with Create React App
 
