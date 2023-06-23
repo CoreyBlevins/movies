@@ -1,3 +1,8 @@
+# Welcome to my movies project!
+
+This project is deployed using GitHub Pages at https://coreyblevins.github.io/movies/.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
