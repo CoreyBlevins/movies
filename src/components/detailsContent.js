@@ -48,7 +48,13 @@ export const DetailsContent = ({ data, images, videos, credits, recommended, sel
             <Cast credits={credits} selectedTab={selectedTab} />
 
             <div className={selectedTab === 5 ? `${styles.similarBox}` : 'hidden'}>
+                {recommended.length > 0 ? 
                 <Results data={recommended.slice(0, 20)} setMovieId={setMovieId} />
+                :
+                <div className={styles.noRecommended}>
+                    <p className={styles.noRecommendedText}>Sorry, no recommended results.</p>
+                </div>
+                }
             </div>
 
         </div>
@@ -61,4 +67,6 @@ const styles = {
     info: 'p-2 w-[60vw]',
     mobileInfoBox: 'pb-10 px-4 sm:hidden',
     mobileInfo: 'flex flex-col',
+    noRecommended: 'flex justify-center mt-10 mb-5',
+    noRecommendedText: 'text-white'
 }

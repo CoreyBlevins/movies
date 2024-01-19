@@ -29,8 +29,8 @@ export const Topbar = ({ search, setSearch, setData }) => {
     return (
         <div>
             <div className={styles.container}>
-                <div class={styles.tmdb}>
-                    <a href='https://www.themoviedb.org/?language=en-US'>
+                <div className={styles.tmdb}>
+                    <a href='https://www.themoviedb.org/?language=en-US' target="_blank" rel="noopener noreferrer">
                         <TMDBLogo />
                     </a>
                 </div>

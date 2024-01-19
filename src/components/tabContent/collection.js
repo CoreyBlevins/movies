@@ -11,9 +11,7 @@ export const Collection = ({ collection }) => {
                             <p>{collection.name}</p>
                         </div>
                         :
-                        <div>
-
-                        </div>
+                        <div></div>
                     }
                 </div>
             }
